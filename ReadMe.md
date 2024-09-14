@@ -53,3 +53,7 @@ updates or code tampering).
 ## Extras:
 
 - "--": The double dash (--) is used to indicate that the arguments following it are for the command that will be run after the script finishes waiting. This tells the script that everything after -- is a separate command.
+
+- fmt VS log:
+  - log.Println: By default, log.Println writes to the standard error stream (stderr), but you can configure it to write to files or other destinations.
+  - fmt.Println: Writes to the standard output stream (stdout).
