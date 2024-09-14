@@ -4,9 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/gorilla/mux"
 	"go_template/db"
-	"go_template/handlers"
+	"go_template/routes"
 )
 
 func main() {
@@ -14,15 +13,8 @@ func main() {
 	db.InitDB()
 	defer db.DB.Close()
 
-	// Set up router
-	r := mux.NewRouter()
-
-	// Routes
-	r.HandleFunc("/users", handlers.GetUsers).Methods("GET")
-	r.HandleFunc("/users/{id}", handlers.GetUser).Methods("GET")
-	r.HandleFunc("/users", handlers.CreateUser).Methods("POST")
-	r.HandleFunc("/users/{id}", handlers.UpdateUser).Methods("PUT")
-	r.HandleFunc("/users/{id}", handlers.DeleteUser).Methods("DELETE")
+	// Initialize all routes
+	r := routes.InitRoutes()
 
 	// Start server
 	log.Println("Server is running on port 8080")
